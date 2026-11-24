@@ -1,1 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<title>رِحْلَةُ الحِفْظِ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f5f7f3;--card:#fff;--hero:#e9f0e6;--green:#2f5d46;--green2:#3f7d5c;--text:#1d2b24;--muted:#6b7a72;--line:#dfe6e0;--badge:#d9f2e2;--badge-t:#15803d;--ok:#3f7d5c;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14201a;--card:#1c2b23;--hero:#233a2d;--green:#a7d9bb;--green2:#6fbf93;--text:#e8f0ea;--muted:#9bb0a3;--line:#33483c;--badge:#24513a;--badge-t:#9be8bb;--ok:#6fbf93;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#14201a;--card:#1c2b23;--hero:#233a2d;--green:#a7d9bb;--green2:#6fbf93;--text:#e8f0ea;--muted:#9bb0a3;--line:#33483c;--badge:#24513a;--badge-t:#9be8bb;--ok:#6fbf93;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Segoe UI",Tahoma,Arial,sans-serif;font-size:clamp(16px,1.6vw,20px);line-height:1.6}
+.wrap{max-width:900px;margin:0 auto;padding:14px}
+.bar{display:flex;gap:8px;justify-content:space-between;align-items:center;margin-bottom:10px;flex-wrap:wrap}
+button{font:inherit;cursor:pointer;border:1.5px solid var(--green2);background:var(--card);color:var(--green);border-radius:999px;padding:8px 18px;min-height:44px;touch-action:manipulation}
+button:hover{background:var(--hero)}
+.hero{background:var(--hero);border-radius:20px;text-align:center;padding:22px 14px}
+.hero h1{margin:0;font-family:Amiri,"Traditional Arabic",serif;font-size:2.3em;color:var(--green);line-height:1.3}
+.hero h2{margin:2px 0;font-size:1.2em;letter-spacing:.06em;color:var(--green)}
+.hero p{margin:2px 0;color:var(--muted);font-size:.9em}
+input[type=text],textarea{font:inherit;color:var(--text);background:transparent;border:0;border-bottom:2px dashed var(--line);padding:6px 8px;width:100%;min-height:44px}
+input[type=text]:focus,textarea:focus{outline:none;border-bottom-color:var(--green2);background:var(--hero)}
+.week{display:inline-flex;align-items:center;gap:8px;width:min(340px,90%)}
+h3{margin:26px 4px 10px;font-size:1.15em;display:flex;gap:6px;align-items:baseline}
+.card{background:var(--card);border:1.5px solid var(--line);border-radius:18px;padding:14px 16px}
+.hint{color:var(--muted);font-size:.9em;margin:0 4px 8px}
+.badge{display:inline-block;background:var(--badge);color:var(--badge-t);font-weight:700;border-radius:999px;padding:2px 12px;font-size:.85em}
+.row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:10px;color:var(--muted)}
+.tbl{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th{font-size:.95em;padding:8px 4px;text-align:center;border-bottom:2px solid var(--line)}
+th:first-child,td:first-child{text-align:start;padding-inline-end:10px;min-width:130px}
+td{padding:6px 4px;text-align:center;border-bottom:1px solid var(--line)}
+.cb{appearance:none;-webkit-appearance:none;width:34px;height:34px;border:2px solid var(--line);border-radius:9px;background:var(--card);cursor:pointer;display:inline-grid;place-content:center;margin:0;transition:.15s;touch-action:manipulation}
+.cb:checked{background:var(--ok);border-color:var(--ok)}
+.cb:checked::after{content:"✓";color:#fff;font-size:22px;font-weight:700;line-height:1}
+.cb.round{border-radius:50%}
+.prog{margin-top:12px;height:14px;background:var(--line);border-radius:999px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--ok);transition:width .4s}
+.pt{display:flex;justify-content:space-between;color:var(--muted);font-size:.9em;margin-top:4px}
+.rv{display:flex;align-items:center;gap:10px;margin:6px 0}
+.rv label{white-space:nowrap}
+textarea{resize:vertical;min-height:130px;border:0;line-height:2.2;background-image:repeating-linear-gradient(transparent,transparent 2.1em,var(--line) 2.1em,var(--line) calc(2.1em + 1px))}
+.foot{margin-top:22px;background:var(--hero);border-radius:20px;text-align:center;padding:20px 12px}
+.foot b{display:block;font-family:Amiri,"Traditional Arabic",serif;font-style:italic;font-size:1.9em;color:var(--green);line-height:1.5}
+.foot span{color:var(--muted);font-size:.95em}
+#win{display:none;margin-top:12px;text-align:center;font-weight:700;color:var(--badge-t);background:var(--badge);border-radius:14px;padding:10px}
+.hello{margin-top:12px;background:var(--card);border:1.5px solid var(--line);border-radius:16px;padding:10px 14px;display:none}.hello small{display:block;color:var(--muted);font-size:.85em}.hello b{display:block;font-family:Amiri,"Traditional Arabic",serif;font-size:1.35em;font-weight:700;color:var(--green);line-height:1.8;margin-top:4px}.hello #hsrc{margin-top:2px}
+.who{display:inline-flex;align-items:center;gap:8px;width:min(340px,90%);margin-top:6px}
+.saved{color:var(--muted);font-size:.85em}
+.warn{background:#fff4d6;color:#5b4300;border:1.5px solid #e6b800;border-radius:14px;padding:10px 14px;margin-bottom:10px;font-size:.95em}.warn a{color:inherit;font-weight:700}.bar div.sp{flex:1}
+.chart{display:flex;gap:6px;align-items:flex-end;height:150px;padding-bottom:4px}
+.col{flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0}
+.col i{display:block;width:100%;max-width:38px;background:var(--ok);border-radius:6px 6px 0 0}
+.col span,.col em{font-size:.75em;font-style:normal;color:var(--muted)}
+.trend{margin:12px 0;padding:10px 12px;background:var(--hero);border-radius:12px}
+.hrow{padding:10px 2px;border-top:1px solid var(--line)}
+.hrow small{display:block;color:var(--muted)}
+.hp{display:flex;align-items:center;gap:10px;margin:6px 0}.hp .prog{flex:1;margin:0}.hp span{white-space:nowrap;font-size:.9em}
+@media print{.bar{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="bar">
+ <button id="lang" type="button">English</button>
+ <span class="saved" data-ar="✓ يُحفظ تلقائياً" data-en="✓ Auto-saved">✓ يُحفظ تلقائياً</span><div class="sp"></div><button id="hbtn" type="button" data-ar="📊 سجل الأسابيع" data-en="📊 History">📊 سجل الأسابيع</button>
+ <button id="reset" type="button" data-ar="بدء أسبوع جديد" data-en="Start a new week">بدء أسبوع جديد</button>
+</div>
 
+<header class="hero">
+ <h1>رِحْلَةُ الحِفْظِ</h1>
+ <h2>QURAN WEEKLY PLANNER</h2>
+ <p data-ar="رحلتي الأسبوعية مع القرآن الكريم" data-en="My weekly journey with the Holy Quran">رحلتي الأسبوعية مع القرآن الكريم</p>
+ <div class="week"><span data-ar="الأسبوع:" data-en="Week:">الأسبوع:</span><input type="text" id="week" aria-label="week"></div>
+ <div class="who"><span data-ar="اسمي:" data-en="My name:">اسمي:</span><input type="text" id="name" aria-label="name" placeholder="..."></div>
+ <div class="hello" id="hello"><small id="hs"></small><b id="hb"></b><small id="hsrc"></small></div>
+</header>
+
+<h3><span>1.</span><span data-ar="الحفظ الجديد – New Quarter" data-en="New Quarter – الحفظ الجديد">الحفظ الجديد – New Quarter</span></h3>
+<div class="card">
+ <p class="hint" data-ar="الربع الجديد لهذا الأسبوع" data-en="This week’s new quarter">الربع الجديد لهذا الأسبوع</p>
+ <input type="text" id="newq" aria-label="new quarter">
+ <div class="row"><span class="badge" data-ar="يوم الحفظ الأول" data-en="First memorizing day">يوم الحفظ الأول</span><span data-ar="حفظ الربع كاملاً" data-en="Memorize the whole quarter">حفظ الربع كاملاً</span></div>
+ <div class="row" style="font-size:1.05em"><span data-ar="باقي أيام الأسبوع: تكرار وتسميع الربع الجديد يومياً." data-en="Rest of the week: repeat and recite the new quarter daily.">باقي أيام الأسبوع: تكرار وتسميع الربع الجديد يومياً.</span></div>
+</div>
+
+<h3><span>2.</span><span data-ar="المتابعة اليومية – Daily Checklist" data-en="Daily Checklist – المتابعة اليومية">المتابعة اليومية – Daily Checklist</span></h3>
+<p class="hint" data-ar="ضعي ✓ بعد إنجاز كل مهمة" data-en="Tick ✓ after finishing each task">ضعي ✓ بعد إنجاز كل مهمة</p>
+<div class="card tbl"><table id="tbl"></table>
+ <div class="prog"><i id="bar"></i></div>
+ <div class="pt"><span data-ar="إنجازك هذا الأسبوع" data-en="Your progress this week">إنجازك هذا الأسبوع</span><span id="pct">0 / 28</span></div>
+ <div id="win" data-ar="🌟 ما شاء الله! أتممتِ جميع مهام الأسبوع" data-en="🌟 MashaAllah! You completed every task this week">🌟 ما شاء الله! أتممتِ جميع مهام الأسبوع</div>
+</div>
+
+<h3><span>3.</span><span data-ar="مراجعة الحفظ القديم" data-en="Reviewing Old Memorization">مراجعة الحفظ القديم</span></h3>
+<div class="card">
+ <p class="hint" style="color:var(--text);font-weight:600" data-ar="الأرباع المطلوب مراجعتها يومياً" data-en="Quarters to review daily">الأرباع المطلوب مراجعتها يومياً</p>
+ <div id="rev"></div>
+</div>
+
+<h3><span>4.</span><span data-ar="مساحة إضافية – Extra" data-en="Extra – مساحة إضافية">مساحة إضافية – Extra</span></h3>
+<div class="card"><textarea id="extra" aria-label="extra"></textarea></div>
+
+<h3 id="hsec"><span>5.</span><span data-ar="سجل الأسابيع السابقة" data-en="Previous Weeks History">سجل الأسابيع السابقة</span></h3>
+<div class="card"><div id="hlist"></div><div style="margin-top:12px;text-align:center"><button id="hclear" type="button" data-ar="مسح السجل" data-en="Clear history">مسح السجل</button></div></div>
+
+<footer class="foot"><b>فَاسْتَبِقُوا الْخَيْرَاتِ</b><span data-ar="القليل الدائم خير من الكثير المنقطع" data-en="Little but constant is better than much but interrupted">القليل الدائم خير من الكثير المنقطع</span></footer>
+</div>
+
+<script>
+var D={ar:["سبت","أحد","اثن","ثلا","أرب","خمي","جمع"],en:["Sat","Sun","Mon","Tue","Wed","Thu","Fri"]};
+var T={ar:["حفظ الربع الجديد / تكراره","مراجعة 3–4 أرباع قديمة","الورد القرآني","سماع القرآن"],en:["Memorize / repeat the new quarter","Review 3–4 old quarters","Daily Quran portion (Wird)","Listen to the Quran"]};
+var lang="ar",S={},KEY="quran-planner-v1";
+try{S=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){S={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+var tbl=document.getElementById("tbl");
+function build(){
+ var h="<tr><th></th>";
+ for(var d=0;d<7;d++)h+="<th data-d='"+d+"'></th>";
+ h+="</tr>";
+ for(var t=0;t<4;t++){h+="<tr><td data-t='"+t+"'></td>";
+  for(d=0;d<7;d++){var k="c"+t+"_"+d;h+="<td><input class='cb' type='checkbox' data-k='"+k+"' "+(S[k]?"checked":"")+" aria-label='"+t+"-"+d+"'></td>"}
+  h+="</tr>"}
+ tbl.innerHTML=h;
+ var r="";
+ for(var i=1;i<=4;i++){var k2="r"+i,n="n"+i;
+  r+="<div class='rv'><input class='cb round' type='checkbox' data-k='"+k2+"' "+(S[k2]?"checked":"")+"><label data-q='"+i+"'></label><input type='text' data-k='"+n+"' value='"+(S[n]||"").replace(/'/g,"&#39;")+"'></div>"}
+ document.getElementById("rev").innerHTML=r;
+}
+function texts(){
+ document.querySelectorAll("[data-ar]").forEach(function(e){e.textContent=e.getAttribute("data-"+lang)});
+ document.querySelectorAll("th[data-d]").forEach(function(e){e.textContent=D[lang][e.dataset.d]});
+ document.querySelectorAll("td[data-t]").forEach(function(e){e.textContent=T[lang][e.dataset.t]});
+ document.querySelectorAll("label[data-q]").forEach(function(e){e.textContent=(lang=="ar"?"الربع ":"Quarter ")+e.dataset.q+":"});
+ document.getElementById("lang").textContent=lang=="ar"?"English":"العربية";hello();renderH();
+ document.documentElement.lang=lang;document.documentElement.dir=lang=="ar"?"rtl":"ltr";
+}
+function prog(){
+ var n=0;document.querySelectorAll("#tbl .cb:checked").forEach(function(){n++});
+ document.getElementById("bar").style.width=(n/28*100)+"%";
+ document.getElementById("pct").textContent=n+" / 28";
+ document.getElementById("win").style.display=n==28?"block":"none";
+}
+function fill(){["week","newq","extra","name"].forEach(function(id){document.getElementById(id).value=S[id]||""})}
+document.addEventListener("input",function(e){var t=e.target;
+ if(t.id){S[t.id]=t.value}else if(t.dataset.k){S[t.dataset.k]=t.type=="checkbox"?t.checked:t.value}
+ save();prog();hello()});
+document.getElementById("lang").onclick=function(){lang=lang=="ar"?"en":"ar";S.lang=lang;save();texts()};
+var armed=false;
+document.getElementById("reset").onclick=function(){
+ var b=this;
+ if(!armed){armed=true;b.textContent=lang=="ar"?"اضغطي مرة أخرى للتأكيد":"Tap again to confirm";
+  setTimeout(function(){armed=false;texts()},3000);return}
+ armed=false;archive();S={lang:lang,name:S.name||""};save();build();fill();texts();prog()};
+var H=[],HK="quran-planner-history-v1";
+try{H=JSON.parse(localStorage.getItem(HK)||"[]")}catch(e){H=[]}
+function saveH(){try{localStorage.setItem(HK,JSON.stringify(H))}catch(e){}}
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function archive(){
+ var dy=[0,0,0,0,0,0,0],tk=[0,0,0,0],n=0,rv=0,t,d,i;
+ for(t=0;t<4;t++)for(d=0;d<7;d++)if(S["c"+t+"_"+d]){dy[d]++;tk[t]++;n++}
+ for(i=1;i<=4;i++)if(S["r"+i])rv++;
+ if(!n&&!rv&&!S.week&&!S.newq&&!S.extra)return;
+ H.push({w:S.week||"",q:S.newq||"",n:n,rv:rv,dy:dy,tk:tk,t:Date.now()});saveH()}
+function renderH(){
+ var ar=lang=="ar",el=document.getElementById("hlist");
+ if(!H.length){el.innerHTML="<p class='hint'>"+(ar?"لا توجد أسابيع محفوظة بعد. عند الضغط على «بدء أسبوع جديد» يُحفظ أسبوعك هنا لتتابعي تطورك.":"No saved weeks yet. When you press “Start a new week”, this week is saved here so you can track your progress.")+"</p>";return}
+ var pc=H.map(function(e){return Math.round(e.n/28*100)}),from=Math.max(0,H.length-12),h="<div class='chart'>",i;
+ for(i=from;i<H.length;i++)h+="<div class='col'><span>"+pc[i]+"%</span><i style='height:"+(Math.round(pc[i]*0.9)+3)+"px'></i><em>"+(i+1)+"</em></div>";
+ h+="</div>";
+ var avg=Math.round(pc.reduce(function(a,b){return a+b},0)/pc.length),tr=ar?"المتوسط العام: "+avg+"%":"Overall average: "+avg+"%";
+ if(H.length>1){var df=pc[pc.length-1]-pc[pc.length-2];
+  tr+=" — "+(df>0?(ar?"📈 تحسّنتِ عن الأسبوع السابق بمقدار "+df+"%":"📈 You improved by "+df+"% vs the previous week"):df<0?(ar?"📉 انخفض إنجازك "+(-df)+"% عن الأسبوع السابق، ابدئي هذا الأسبوع بقوة":"📉 Down "+(-df)+"% from the previous week, start strong this week"):(ar?"ثبات على نفس المستوى":"Same level as the previous week"))}
+ h+="<div class='trend'>"+tr+"</div>";
+ for(i=H.length-1;i>=0;i--){var e=H[i],mi=0,j;
+  for(j=1;j<4;j++)if(e.tk[j]<e.tk[mi])mi=j;
+  var dt=new Date(e.t).toLocaleDateString(ar?"ar":"en"),
+  wk=e.n<28?(ar?"الأضعف: ":"Weakest: ")+T[lang][mi]+" ("+e.tk[mi]+"/7)":(ar?"⭐ أتممتِ كل المهام":"⭐ All tasks completed");
+  h+="<div class='hrow'><b>"+esc(e.w||(ar?"أسبوع "+(i+1):"Week "+(i+1)))+"</b><small>"+dt+(e.q?" · "+esc(e.q):"")+"</small><div class='hp'><div class='prog'><i style='width:"+pc[i]+"%'></i></div><span>"+pc[i]+"% · "+e.n+"/28"+"</span></div><small>"+wk+" · "+(ar?"المراجعة: ":"Review: ")+e.rv+"/4"+"</small></div>"}
+ el.innerHTML=h}
+var hArm=false;
+document.getElementById("hclear").onclick=function(){var b=this;
+ if(!hArm){hArm=true;b.textContent=lang=="ar"?"اضغطي مرة أخرى للتأكيد":"Tap again to confirm";setTimeout(function(){hArm=false;texts()},3000);return}
+ hArm=false;H=[];saveH();renderH();texts()};
+document.getElementById("hbtn").onclick=function(){document.getElementById("hsec").scrollIntoView({behavior:"smooth"})};
+var MG=[["يا {n}، يُقال لصاحب القرآن يوم القيامة: «اقرأ وارتقِ، ورتّل كما كنتَ ترتّل في الدنيا، فإن منزلتك عند آخر آية تقرؤها». فكل ربع يُحفَظ يرفع صاحبه درجة 🌟","{n}, it will be said to the companion of the Quran on the Day of Judgment: “Recite and rise, as you used to recite in the world, for your rank is at the last verse you recite.” Every quarter you memorize lifts you a level 🌟","رواه أبو داود والترمذي","Abu Dawud & al-Tirmidhi"],["يا {n}، قال ﷺ: «الماهر بالقرآن مع السفرة الكرام البررة، والذي يقرؤه ويتتعتع فيه وهو عليه شاق فله أجران». فحتى مع التعثّر في الحفظ، للمجتهد أجران بإذن الله 💚","{n}, the Prophet ﷺ said: “The skilled reciter of the Quran is with the noble, righteous angels, and whoever recites it with difficulty, struggling through it, gets a double reward.” Even when you stumble, you earn two rewards 💚","متفق عليه","Agreed upon (Bukhari & Muslim)"],["يا {n}، قال ﷺ: «خيركم من تعلّم القرآن وعلّمه». هذه رحلة أفضل الناس بإذن الله، والاستمرار فيها خير 🌿","{n}, the Prophet ﷺ said: “The best among you are those who learn the Quran and teach it.” You are on the journey of the best of people, so keep going 🌿","رواه البخاري","Bukhari"],["يا {n}، قال ﷺ: «إن لله أهلين من الناس»، قيل: من هم؟ قال: «هم أهل القرآن، أهل الله وخاصّته». ما أجمل أن يكون المرء منهم ✨","{n}, the Prophet ﷺ said: “Allah has people among mankind.” They asked: who are they? He said: “The people of the Quran, the people of Allah and His chosen ones.” How beautiful to be among them ✨","رواه ابن ماجه وأحمد","Ibn Majah & Ahmad"],["يا {n}، قال ﷺ: «من قرأ حرفاً من كتاب الله فله به حسنة، والحسنة بعشر أمثالها». فكم حسنة ستُكتب لك هذا الأسبوع؟ 🌸","{n}, the Prophet ﷺ said: “Whoever recites a letter of the Book of Allah earns a good deed, and each good deed is multiplied tenfold.” How many will you collect this week? 🌸","رواه الترمذي","al-Tirmidhi"],["يا {n}، قال ﷺ: «اقرؤوا القرآن فإنه يأتي يوم القيامة شفيعاً لأصحابه». فليكن القرآن صاحبك الذي يشفع لك 🌙","{n}, the Prophet ﷺ said: “Recite the Quran, for it will come on the Day of Judgment as an intercessor for its companions.” Make it your companion who will plead for you 🌙","رواه مسلم","Muslim"],["يا {n}، قال ﷺ: «من قرأ القرآن وعمل به أُلبس والداه تاجاً يوم القيامة ضوؤه أحسن من ضوء الشمس». فما ظنّكم بالذي عمل بهذا؟ 👑","{n}, the Prophet ﷺ said: “Whoever recites the Quran and acts on it, his parents will be crowned on the Day of Judgment with a crown whose light is better than the sun.” Then what of the one who acted on it themselves? 👑","رواه أبو داود","Abu Dawud"]];
+var NK=[["{n} أميرة الحفظ 👑","Princess of Memorization {n} 👑"],["{n} نجمة القرآن ⭐","{n}, Star of the Quran ⭐"],["{n} حافظة النور 🌙","{n}, Keeper of the Light 🌙"],["{n} زهرة الفردوس 🌸","{n}, Flower of Firdaws 🌸"],["{n} جوهرة الحفظ 💎","{n}, Gem of Memorization 💎"],["{n} قارئة الفجر 🌅","{n}, Reciter of the Dawn 🌅"],["{n} صاحبة القرآن 📖","{n}, Companion of the Quran 📖"],["{n} بدر الحفظ 🌕","{n}, Full Moon of Hifz 🌕"],["{n} سنبلة الخير 🌾","{n}, Spike of Goodness 🌾"],["{n} فارسة الخيرات 🏇","{n}, Knight of Good Deeds 🏇"]];
+function hello(){
+ var n=(S.name||"").trim(),box=document.getElementById("hello");
+ if(!n){box.style.display="none";return}
+ var d=Math.floor((Date.now()-new Date().getTimezoneOffset()*60000)/86400000),w=Math.floor((d-2)/7),p=MG[((w%MG.length)+MG.length)%MG.length];
+ document.getElementById("hs").textContent=lang=="ar"?"رسالتك لهذا الأسبوع ✨":"Your message this week ✨";
+ document.getElementById("hb").textContent=p[lang=="ar"?0:1].replace("{n}",n);
+ document.getElementById("hsrc").textContent=p[lang=="ar"?2:3];
+ box.style.display="block"}
+if(S.lang)lang=S.lang;
+build();fill();texts();prog();
+</script>
+</body>
+</html>
